@@ -2,7 +2,7 @@ using Distributions: ProbabilityWeights, sample
 
 function execpolicy(model, current_state)
     probs = model(current_state)
-    action = sample(1:2, ProbabilityWeights(probs))
+    action = sample(1:2, ProbabilityWeights(probs)) # Living that stochastic policy life...
     log_prob = log(probs[action])
     return action, log_prob
 end

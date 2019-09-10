@@ -17,21 +17,9 @@ function policyupdate!(rewards, log_probs)
 end
 
 function calcreward(rewards_subset)
-    discounted_goal = 0
-    pow = 0
-    for reward ∈ rewards_subset
-        discounted_goal += γ^pow * reward
-        pow += 1
-    end
-    return discounted_goal
-end
-
-#=
-function calcreward(rewards_subset)
     γ_subarray = ones(Float32, length(rewards_subset)-1)
     γ_subarray *= γ
     γ_array = cumprod(vcat(Float32[1], γ_subarray))
     discouonted_goal = sum(γ_array .* rewards_subset)
     return discouonted_goal
 end
-=#
